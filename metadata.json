@@ -1,0 +1,8 @@
+{
+  "name": "Remix MLCommons AIRR Threat Taxonomy",
+  "description": "Mechanism-first classification framework and interactive spatial atlas cataloging 113 prompt attack vectors across 4 families, 8 categories, and 18 atomic leaves.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

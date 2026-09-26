@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --accent-red: #ef233c;
+    --accent-red-glow: rgba(239, 35, 60, 0.45);
+    --accent-crimson: #d90429;
+    --ground: #000000;
+    --stage: #08080a;
+    --ink: #FFFFFF;
+    --ink-secondary: #A1A1AA;
+    --ink-muted: #71717A;
+    --hairline: rgba(255, 255, 255, 0.08);
+  }
+
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: var(--font-inter), sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+
+.font-display {
+  font-family: var(--font-manrope), sans-serif;
+  letter-spacing: -0.04em;
+}
+
+.font-manrope {
+  font-family: var(--font-manrope), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-meta {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Custom Keyframe Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes border-spin {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animate-fade-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Shiny Red Noir CTA Button */
+.shiny-cta {
+  --gradient-angle: 0deg;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 0.75rem 1.85rem;
+  background: linear-gradient(#050505, #050505) padding-box,
+    conic-gradient(from var(--gradient-angle), transparent 0%, #ef233c 8%, #ef233c 20%, #ef233c 35%, transparent 45%, transparent 100%) border-box;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  isolation: isolate;
+  animation: border-spin 3s linear infinite;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.shiny-cta:hover {
+  box-shadow: 0 0 24px rgba(239, 35, 60, 0.35);
+  transform: translateY(-1px);
+}
+
+.shiny-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0.5px, transparent 0);
+  background-size: 4px 4px;
+  opacity: 0.12;
+  z-index: 0;
+}
+
+/* Parallax Starfields */
+.stars-1 {
+  box-shadow: 180px 90px #fff, 480px 240px #fff, 720px 40px #fff, 980px 650px #fff, 320px 1100px #fff, 1400px 180px #fff, 90px 850px #fff, 780px 1450px #fff, 410px 480px #fff, 1150px 80px #fff, 240px 320px #fff, 1300px 950px #fff;
+}
+.stars-2 {
+  box-shadow: 95px 380px #fff, 620px 190px #fff, 380px 720px #fff, 920px 240px #fff, 160px 980px #fff, 1220px 410px #fff, 510px 1350px #fff, 1050px 750px #fff;
+}
+
+.gradient-blur {
+  position: fixed;
+  z-index: 40;
+  inset: 0 0 auto 0;
+  height: 100px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent);
+  backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.selection-red::selection {
+  background: #ef233c;
+  color: #ffffff;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
+  color: transparent;
+}
+
+.text-stroke-red {
+  -webkit-text-stroke: 1.5px rgba(239, 35, 60, 0.25);
+  color: transparent;
+}
+
+/* Technical Hairline Borders for Dark Noir */
+.hairline-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-t {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-r {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-l {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-all {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Precision registration crosshair */
+.reg-mark {
+  position: relative;
+}
+.reg-mark::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 9px;
+  height: 1px;
+  background-color: #ef233c;
+}
+.reg-mark::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 4px;
+  width: 1px;
+  height: 9px;
+  background-color: #ef233c;
+}
+
+/* Custom scrollbar matching dark obsidian ground with red accents */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030304;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef233c;
+}
